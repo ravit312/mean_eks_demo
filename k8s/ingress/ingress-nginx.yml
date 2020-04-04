@@ -8,12 +8,13 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: capi.dev.vigocare.com
+  - host: k8s.vigocare.com
     http:
       paths:
-      - backend:
-          serviceName: kubernetes-dashboard
-          servicePort: 31000
+      - path: /
+          backend:
+            serviceName: kubernetes-dashboard
+            servicePort: 31000
 #   - host: papi.dev.vigocare.com
 #     http:
 #       paths:
