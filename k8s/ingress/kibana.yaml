@@ -1,17 +1,16 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: ingress-kubernetes-dashboard
-  namespace: kubernetes-dashboard
+  name: ingress-kibana
+  namespace: logs
   annotations:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   rules:
-  - host: k8s.dashboard.vigocare.com
+  - host: kibana.vigocare.com
     http:
       paths:
       - backend:
-          serviceName: kubernetes-dashboard
+          serviceName: kibana
           servicePort: 443
