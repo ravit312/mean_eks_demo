@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alert-deployment
+  labels:
+    app: alert-api
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: alert-api
+  template:
+    metadata:
+      labels:
+        app: alert-api
+    spec:
+      containers:
+      - name: alert-api
+        image: "{{ .Values.image.alert.name }}:{{ .Values.image.alert.tag }}"
+        # ports:
+        # - containerPort: {{ .Values.service.alert.port }}

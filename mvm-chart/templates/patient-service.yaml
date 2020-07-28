@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: patient-api
+  labels:
+    app: patient-api
+spec:
+  type: {{ .Values.service.patient.type }}
+  ports:
+    - port: {{ .Values.service.patient.port }}
+      targetPort: {{ .Values.service.patient.port }}
+      protocol: TCP
+      name: http
+  selector:
+    app: client-api

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-deployment
+  labels:
+    app: notification-api
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: notification-api
+  template:
+    metadata:
+      labels:
+        app: notification-api
+    spec:
+      containers:
+      - name: notification-api
+        image: "{{ .Values.image.notification.name }}:{{ .Values.image.notification.tag }}"
+        # ports:
+        # - containerPort: {{ .Values.service.doctor.port }}

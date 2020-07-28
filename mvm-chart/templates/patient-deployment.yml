@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patient-deployment
+  labels:
+    app: patient-api
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: patient-api
+  template:
+    metadata:
+      labels:
+        app: patient-api
+    spec:
+      containers:
+      - name: patient-api
+        image: "{{ .Values.image.patient.name }}:{{ .Values.image.patient.tag }}"
+        ports:
+        - containerPort: {{ .Values.service.patient.port }}

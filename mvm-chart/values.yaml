@@ -1,0 +1,54 @@
+affinity: {}
+fullnameOverride: ""
+image:
+  patient:
+    name: 751394677851.dkr.ecr.ap-southeast-1.amazonaws.com/patient-service
+    pullPolicy: IfNotPresent
+    tag: latest
+  alert:
+    name: 751394677851.dkr.ecr.ap-southeast-1.amazonaws.com/alert-service
+    pullPolicy: IfNotPresent
+    tag: latest
+  monitoring:
+    name: 751394677851.dkr.ecr.ap-southeast-1.amazonaws.com/monitoring-service
+    pullPolicy: IfNotPresent
+    tag: latest
+  admin:
+    name: 751394677851.dkr.ecr.ap-southeast-1.amazonaws.com/admin-service
+    pullPolicy: IfNotPresent
+    tag: latest
+  # proxy:
+  #   name: 751394677851.dkr.ecr.ap-south-1.amazonaws.com/dx.proxy.server
+  #   pullPolicy: IfNotPresent
+  #   tag: latest
+imagePullSecrets: []
+ingress:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+  enabled: true
+  hosts:
+  - host: chart-example.local
+    paths: []
+  tls: []
+nameOverride: ""
+nodeSelector: {}
+
+replicaCount: 1
+
+resources: {}
+
+service:
+  patient:
+    port: 3200
+    type: NodePort
+  admin:
+    port: 3000
+    type: NodePort
+  # device:
+  #   port: 3300
+  #   type: NodePort
+  # doctor:
+  #   port: 3330
+  #   type: NodePort
+tolerations: []
